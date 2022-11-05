@@ -20,3 +20,19 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/order', function () {
+    return view('order_page');
+});
+
+Route::get('/login', function () {
+    return view('login_page');
+});
+
+Route::get('/sign-up', function () {
+    return view('signup_page');
+});
+
+Route::get('/menu-list', function () {
+    return view('menulist_page');
+});
