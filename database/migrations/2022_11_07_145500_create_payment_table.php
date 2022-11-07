@@ -21,6 +21,8 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->decimal('tagihan', 10, 2);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('paket_id')->references('id')->on('paket')->onDelete('cascade');
         });
     }
 
