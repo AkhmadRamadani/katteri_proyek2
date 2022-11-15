@@ -182,7 +182,7 @@
             </div>
         </section><!-- End Events Section -->
 
-        <!-- ======= Chefs Section ======= -->
+        <!-- ======= Banner Section ======= -->
         <section id="chefs" class="chefs section-bg">
             <div class="container" data-aos="fade-up">
 
@@ -198,6 +198,10 @@
                     <h2 style="color: black;">Mulai kebiasaan meal planning dengan Katteri, urusan makanan tiap hari
                         jadi tidak memusingkan lagi.</h2>
                     <br>
+
+                    <h2>Ini di test saja siapa tau keren kan, nda tau sii jadinya kek gimana,  tapi mau bikin konten aja </h2>
+                    <br>
+                    <h2>Nah disini paragraf kedua, biar keliatan banyak saja di ketik toh, kah aslinya ini kopas kopas ja wkwkwkwkwkwkwkwkwkw</h2>
                     <center>
                         <div class="d-flex" data-aos="fade-up" data-aos-delay="200" style="padding-top: 10px;">
                             <a href="#" class="btn-book-a-table">Book Now!</a>
@@ -207,7 +211,7 @@
                 </div>
 
             </div>
-        </section><!-- End Chefs Section -->
+        </section><!-- End Banner Section -->
     </main><!-- End #main -->
 </div>
 

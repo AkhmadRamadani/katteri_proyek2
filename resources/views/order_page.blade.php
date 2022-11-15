@@ -4,7 +4,7 @@
 <div id="container">
     <style>
     .card {
-        height: 150px;
+        height: 400px;
         width: 239px;
         position: relative;
         margin: 15px;
@@ -35,7 +35,7 @@
         background-color: #f9fafd;
         border: 1px solid #e2e6f3;
         border-radius: 50%;
-        top: 35px;
+        top: 26px;
         right: 20px;
     }
 
@@ -46,7 +46,7 @@
         width: 13px;
         background-color: transparent;
         border-radius: 50%;
-        top: 39.5px;
+        top: 30px;
         right: 24.5px;
     }
 
@@ -58,18 +58,18 @@
 
     h5 {
         font-weight: 600;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: 0.5px;
         margin: 15px 0 20px 0;
     }
 
     h2 {
-        font-size: 28px;
+        font-size: 20px;
     }
 
     span {
         font-weight: 400;
-        font-size: 18px;
+        font-size: 16px;
         color: #7b7b93;
     }
 
@@ -128,33 +128,39 @@
                                 <div class="card">
                                     <input type="radio" name="pricing" id="card1">
                                     <label for="card1">
-                                        <h5>BASIC</h5>
+                                        <br><br>
+                                        <img src="assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""
+                                            style="margin-bottom: 10px;">
+                                        <h5>Weight Loss Package</h5>
                                         <h2>
-                                            <span>$</span>
-                                            15
-                                            <span>/month</span>
+                                            <span>Rp. </span>
+                                            800.000,-
                                         </h2>
                                     </label>
                                 </div>
                                 <div class="card">
                                     <input type="radio" name="pricing" id="card2" checked>
                                     <label for="card2">
-                                        <h5>STANDARD</h5>
+                                        <br><br>
+                                        <img src="assets/img/menu/menu-item-2.png" class="menu-img img-fluid" alt=""
+                                            style="margin-bottom: 10px;">
+                                        <h5>Healthy Food Package</h5>
                                         <h2>
-                                            <span>$</span>
-                                            35
-                                            <span>/month</span>
+                                            <span>Rp. </span>
+                                            800.000,-
                                         </h2>
                                     </label>
                                 </div>
                                 <div class="card">
                                     <input type="radio" name="pricing" id="card3">
                                     <label for="card3">
-                                        <h5>PREMIUM</h5>
+                                        <br><br>
+                                        <img src="assets/img/menu/menu-item-3.png" class="menu-img img-fluid" alt=""
+                                            style="margin-bottom: 10px;">
+                                        <h5>Normal Food Package</h5>
                                         <h2>
-                                            <span>$</span>
-                                            120
-                                            <span>/month</span>
+                                            <span>Rp. </span>
+                                            800.000,-
                                         </h2>
                                     </label>
                                 </div>

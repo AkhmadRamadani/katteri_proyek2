@@ -11,13 +11,13 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{{ url('home') }}">Home</a></li>
-          <li><a href="#">Menu List</a></li>
+          <li><a href="{{ url('menu-list') }}">Menu List</a></li>
           <li><a href="#">Your Food</a></li>
           <li><a href="#">Profile User</a></li>
         </ul>
       </nav><!-- .navbar -->
 
-      <a class="btn-book-a-table" href="#">Book Now!</a>
+      <a class="btn-book-a-table" href="{{ url ('login') }}">Book Now!</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
