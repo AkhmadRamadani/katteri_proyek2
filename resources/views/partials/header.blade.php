@@ -16,8 +16,26 @@
           <li><a href="#">Profile User</a></li>
         </ul>
       </nav><!-- .navbar -->
+      @if (Auth::guest())
+        <a class="btn-book-a-table" href="{{  url ('login') }}">Book Now!</a>
 
-      <a class="btn-book-a-table" href="{{ url ('login') }}">Book Now!</a>
+      
+      @else 
+        <div class="row">
+
+
+          {{-- logout button with post --}}
+          <form action="{{ route('logout') }}" method="post">
+            @csrf
+          <a class="btn-book-a-table" href="{{  url ('menu-list') }}">Book Now!</a>
+
+            <input type="submit" class="btn-book-a-table" value="Logout">
+          </form>
+
+        
+        </div>
+      @endif
+      
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
