@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,14 +26,18 @@ Route::get('/order', function () {
     return view('order_page');
 });
 
-Route::get('/login', function () {
-    return view('login_page');
-});
+// Route::get('/login', function () {
+//     return view('login_page');
+// });
 
-Route::get('/sign-up', function () {
-    return view('signup_page');
-});
+// Route::get('/sign-up', function () {
+//     return view('signup_page');
+// });
 
 Route::get('/menu-list', function () {
     return view('menulist_page');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
