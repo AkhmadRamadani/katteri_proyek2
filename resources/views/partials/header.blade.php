@@ -27,7 +27,7 @@
           {{-- logout button with post --}}
           <form action="{{ route('logout') }}" method="post">
             @csrf
-          <a class="btn-book-a-table" href="{{  url ('menu-list') }}">Book Now!</a>
+            <a class="btn-book-a-table" href="{{  url ('menu-list') }}">Book Now!</a>
 
             <input type="submit" class="btn-book-a-table" value="Logout">
           </form>
