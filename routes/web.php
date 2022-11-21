@@ -38,6 +38,10 @@ Route::get('/menu-list', function () {
     return view('menulist_page');
 });
 
+Route::get('/menu-detail', function () {
+    return view('menudetail_page');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
