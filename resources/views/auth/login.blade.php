@@ -81,7 +81,7 @@
         <div class="signin-content">
             <div class="signin-image">
                 <figure><img src="assets\img\menu\menu-item-5.png" alt="sign up image"></figure>
-                <a href="{{ url('sign-up') }}" class="signup-image-link">Create an account</a>
+                <a href="{{ url('register') }}" class="signup-image-link">Create an account</a>
             </div>
 
             <div class="signin-form">
