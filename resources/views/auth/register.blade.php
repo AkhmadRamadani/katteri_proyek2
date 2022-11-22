@@ -10,7 +10,9 @@
                     <form method="POST" class="register-form" id="register-form" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Your Name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required/>
+                            <input type="text" name="name" id="name" placeholder="Your Name"
+                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                                required />
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -18,45 +20,47 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="Your Email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required/>
+                            <input type="email" name="email" id="email" placeholder="Your Email"
+                                class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
+                                required />
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" id="password" placeholder="Password"  required/>
+                            <input type="password" name="password" id="password" placeholder="Password" required />
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        {{-- <div class="form-group">
-                            <input type="password" name="re_password" id="re_password" placeholder="Repeat your password" />
-                        </div> --}}
+
                         <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                placeholder="Repeat your password" />
+                            @error('password_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <script>
+                                Enable = function(checkbox, btnId) {
+                                    document.getElementById(btnId).disabled = !checkbox.checked; // ← !
+                                }
+                            </script>
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" onclick="Enable(this, 'signup')" />
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
                                 statements in <a href="#" class="term-service">Terms of service</a></label>
-                            <script>
-                                // function myFunction() {
-                                // $(document).ready(function() {
-                                //     $('#agree-term').click(function() {
-                                //         if ($(this).is(':checked')) {
-                                //             $('#signup').submit(function() {
-                                //                 return true;
-                                //             });
-                                //         } else {
-                                //             $('#signup').submit(function() {
-                                //                 return false;
-                                //             });
-
-
-                                //         }
-                                //     });
-                                // });
-                            </script>
+                           
                         </div>
 
                         <div class="form-group form-button">
-                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" disabled/>
                         </div>
                     </form>
                 </div>
