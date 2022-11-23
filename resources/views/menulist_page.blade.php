@@ -170,7 +170,7 @@
 
                     <center>
                         <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                            <a href="#" class="btn-book-a-table">Book Now!</a>
+                            <a href="{{ url('order') }}" class="btn-book-a-table">Book Now!</a>
                         </div>
                     </center>
 

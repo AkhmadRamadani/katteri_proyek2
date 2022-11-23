@@ -42,6 +42,10 @@ Route::get('/menu-detail', function () {
     return view('menudetail_page');
 });
 
+Route::get('/profile', function () {
+    return view('userprofile_page');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

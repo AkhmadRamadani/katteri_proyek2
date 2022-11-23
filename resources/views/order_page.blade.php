@@ -94,7 +94,7 @@
                     <div class="col-lg-4 reservation-img" style="background-image: url(assets/img/reservation.jpg);"
                         data-aos="zoom-out" data-aos-delay="200"></div>
                     <div class="col-lg-8 align-items-center reservation-form-bg">
-                        <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form"
+                        <form action="#" method="post" role="form" class="php-email-form"
                             data-aos="fade-up" data-aos-delay="100">
                             <div class="row gy-4">
                                 <div class="col-6">
