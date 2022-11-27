@@ -13,7 +13,9 @@
           <li><a href="{{ url('home') }}">Home</a></li>
           <li><a href="{{ url('menu-list') }}">Menu List</a></li>
           <li><a href="{{ url('your-food') }}">Your Food</a></li>
+          @if (Auth::check())
           <li><a href="{{ url('profile') }}">Profile User</a></li>
+          @endif
         </ul>
       </nav><!-- .navbar -->
       @if (Auth::guest())
