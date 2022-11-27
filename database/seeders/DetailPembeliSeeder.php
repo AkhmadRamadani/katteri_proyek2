@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class DetailUserSeeder extends Seeder
+class DetailPembeliSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,12 @@ class DetailUserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('detail_users')->insert([
-            'user_id' => 1,
-            'alamat' => 'Jl. Admin',
-            'no_telp' => '081234567890',
-            'foto' => 'default.jpg',
+        DB::table('detail_pembeli')->insert([
+            'subscribe_id' => 1,
+            'nama' => 'Rizky',
+            'alamat' => 'Jl. Raya',
+            'no_telp_1' => '081234567890',
+            'no_telp_2' => '081234567890',
             'kode_pos' => '12345',
         ]);
     }

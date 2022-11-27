@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detail_users', function (Blueprint $table) {
+        Schema::create('detail_pembeli', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('subscribe_id');
+            $table->string('nama');
             $table->string('alamat');
-            $table->string('no_telp');
+            $table->string('no_telp_1');
+            $table->string('no_telp_2');
             $table->string('kode_pos');
-            $table->string('foto');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('subscribe_id')->references('id')->on('subscribe')->onDelete('cascade');
 
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_users');
+        Schema::dropIfExists('detail_pembeli');
     }
 };
