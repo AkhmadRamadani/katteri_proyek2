@@ -21,5 +21,17 @@ class PaketSeeder extends Seeder
             'harga_paket' => 100000,
             'foto' => 'paket-1.jpg',
         ]);
+        DB::table('paket')->insert([
+            'nama_paket' => 'Weight Gain Package',
+            'deskripsi' => 'Paket ini cocok untuk kamu yang ingin menambah berat badan dengan cara yang sehat dan alami',
+            'harga_paket' => 100000,
+            'foto' => 'paket-2.jpg',
+        ]);
+        DB::table('paket')->insert([
+            'nama_paket' => 'Muscle Gain Package',
+            'deskripsi' => 'Paket ini cocok untuk kamu yang ingin menambah massa otot dengan cara yang sehat dan alami',
+            'harga_paket' => 100000,
+            'foto' => 'paket-3.jpg',
+        ]);
     }
 }

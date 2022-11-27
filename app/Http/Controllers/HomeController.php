@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaketModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $paket = PaketModel::all();
+        /// get current user
+        $user = auth()->user();
+        // dd('test');
+        return view('home', ['paket' => $paket, 'user' => $user]);
     }
 }
