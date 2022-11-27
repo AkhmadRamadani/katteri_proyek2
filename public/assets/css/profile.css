@@ -1533,23 +1533,6 @@ a.text-white:focus {
     color: #172b4d !important;
 }
 
-.footer {
-    padding: 2.5rem 0;
-    background: #f7fafc;
-}
-
-.footer .nav .nav-item .nav-link {
-    color: #8898aa !important;
-}
-
-.footer .nav .nav-item .nav-link:hover {
-    color: #525f7f !important;
-}
-
-.footer .copyright {
-    font-size: .875rem;
-}
-
 .form-control-label {
     font-size: .875rem;
     font-weight: 600;

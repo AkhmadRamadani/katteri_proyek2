@@ -141,7 +141,7 @@
             </div>
         </div>
 
-        <div class="container-fluid mt--7" style="padding-top: 150px;">
+        <div class="container-fluid mt--7" style="padding-top: 150px; margin-bottom:80px">
             <div class="row">
                 <div class="col-xl-12 order-xl-1">
                     <div class="card bg-secondary shadow">
