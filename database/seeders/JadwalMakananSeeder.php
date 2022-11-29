@@ -35,6 +35,91 @@ class JadwalMakananSeeder extends Seeder
             'menu_id' => 4,
             'paket_id' => 1,
         ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 5,
+            'menu_id' => 1,
+            'paket_id' => 1,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 6,
+            'menu_id' => 2,
+            'paket_id' => 1,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 7,
+            'menu_id' => 3,
+            'paket_id' => 1,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 1,
+            'menu_id' => 1,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 2,
+            'menu_id' => 2,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 3,
+            'menu_id' => 3,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 4,
+            'menu_id' => 4,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 5,
+            'menu_id' => 1,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 6,
+            'menu_id' => 2,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 7,
+            'menu_id' => 3,
+            'paket_id' => 2,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 1,
+            'menu_id' => 1,
+            'paket_id' => 3,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 2,
+            'menu_id' => 2,
+            'paket_id' => 3,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 3,
+            'menu_id' => 3,
+            'paket_id' => 3,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 4,
+            'menu_id' => 4,
+            'paket_id' => 3,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 5,
+            'menu_id' => 1,
+            'paket_id' => 3,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 6,
+            'menu_id' => 2,
+            'paket_id' => 3,
+        ]);
+        DB::table('jadwal_makanan')->insert([
+            'hari_id' => 7,
+            'menu_id' => 3,
+            'paket_id' => 3,
+        ]);
         
     }
 }

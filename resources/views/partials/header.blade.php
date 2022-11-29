@@ -19,7 +19,7 @@
         </ul>
       </nav><!-- .navbar -->
       @if (Auth::guest())
-        <a class="btn-book-a-table" href="{{  url ('login') }}">Book Now!</a>
+        <a class="btn-book-a-table" href="{{  url ('login') }}">Login</a>
 
       
       @else 

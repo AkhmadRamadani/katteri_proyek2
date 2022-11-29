@@ -14,6 +14,8 @@ class MenuModel extends Model
     /// have one to many with jadwal_makanan
     public function jadwal_makanan()
     {
-        return $this->hasMany(JadwalMakananModel::class, 'menu_id', 'id');
+        return $this->hasMany(JadwalMakananModel::class, 'menu_id', 'id')->withDefault();
     }
+
+    
 }

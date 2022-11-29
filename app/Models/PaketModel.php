@@ -14,7 +14,7 @@ class PaketModel extends Model
     /// have one to many with jadwal_makanan
     public function jadwal_makanan()
     {
-        return $this->hasMany(JadwalMakananModel::class, 'paket_id', 'id');
+        return $this->hasMany(JadwalMakananModel::class,'paket_id','id');
     }
 }
 

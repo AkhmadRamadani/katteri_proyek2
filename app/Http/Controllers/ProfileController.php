@@ -23,6 +23,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('userprofile_page');
+        $user = auth()->user();
+        return view('userprofile_page', ['user' => $user]);
     }
 }

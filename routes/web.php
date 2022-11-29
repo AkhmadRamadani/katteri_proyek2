@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,9 +33,7 @@ Route::get('/order', function () {
 //     return view('signup_page');
 // });
 
-Route::get('/menu-list', function () {
-    return view('menulist_page');
-});
+Route::get('/menu-list', [MenuListController::class, 'index'])->name('menu-list');
 
 Route::get('/menu-detail', function () {
     return view('menudetail_page');
