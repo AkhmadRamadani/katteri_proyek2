@@ -14,7 +14,7 @@ class PaymentModel extends Model
     /// have one to one with subscribe
     public function subscribe()
     {
-        return $this->hasOne(SubscribeModel::class, 'payment_id', 'id')->withDefault();
+        return $this->belongsTo(SubscribeModel::class, 'subcription_id', 'id')->withDefault();
     }
 
     /// have one to many with user

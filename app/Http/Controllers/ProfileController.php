@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubscribeModel;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -24,6 +25,12 @@ class ProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('userprofile_page', ['user' => $user]);
+        /// get user subscription with paket and payment
+        $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'payment')->get();
+
+        // $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket')->get();
+        
+        // dd($subscribe);
+        return view('userprofile_page', ['user' => $user, 'subscribe' => $subscribe]);
     }
 }

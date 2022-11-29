@@ -14,13 +14,13 @@ class SubscribeModel extends Model
     /// have one to many with paket
     public function paket()
     {
-        return $this->hasMany(PaketModel::class, 'subscribe_id', 'id')->withDefault();
+        return $this->belongsTo(PaketModel::class, 'paket_id', 'id')->withDefault();
     }
 
     /// have one to many with detail_pembeli
     public function detail_pembeli()
     {
-        return $this->hasMany(DetailPembeliModel::class, 'subscribe_id', 'id')->withDefault();
+        return $this->hasOne(DetailPembeliModel::class, 'subscribe_id', 'id');
     }
 
     /// have relation with user
@@ -29,4 +29,11 @@ class SubscribeModel extends Model
         return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
     }
 
+    /// have relation with payment
+    public function payment()
+    {
+        return $this->hasOne(PaymentModel::class, 'subcription_id', 'id')->withDefault();
+    }
+
+    
 }

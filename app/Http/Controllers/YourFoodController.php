@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubscribeModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class YourFoodController extends Controller
 {
@@ -13,6 +15,7 @@ class YourFoodController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
     }
 
     /**
@@ -22,8 +25,20 @@ class YourFoodController extends Controller
      */
     public function index()
     {
-        /// get my order
-        
-        return view('yourfood_page');
+        $user = Auth::user();
+        $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'detail_pembeli', 'paket.jadwal_makanan', 'paket.jadwal_makanan.hari', 'paket.jadwal_makanan.menu')->first();
+
+
+        if ($subscribe != null) {
+            $subscribe->paket->jadwal_makanan = $subscribe->paket->jadwal_makanan->groupBy('hari_id');
+
+            $subscribe->paket->jadwal_makanan = $subscribe->paket->jadwal_makanan->map(function ($item) {
+                $item = $item->groupBy('hari_id');
+                return $item;
+            });
+        }
+
+
+        return view('yourfood_page', ['subscribe' => $subscribe]);
     }
 }

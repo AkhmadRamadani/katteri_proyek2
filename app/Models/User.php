@@ -47,7 +47,7 @@ class User extends Authenticatable
     /// have one to many with subscribe
     public function subscribe()
     {
-        return $this->hasMany(SubscribeModel::class, 'user_id', 'id')->withDefault();
+        return $this->hasMany(SubscribeModel::class, 'user_id', 'id');
     }
 
     /// have one to many with payment
