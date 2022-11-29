@@ -25,9 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $paket = PaketModel::all();
-        /// get current user
         $user = auth()->user();
-        // dd('test');
         return view('home', ['paket' => $paket, 'user' => $user]);
     }
 }

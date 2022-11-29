@@ -25,12 +25,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        /// get user subscription with paket and payment
         $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'payment')->get();
 
-        // $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket')->get();
-        
-        // dd($subscribe);
         return view('userprofile_page', ['user' => $user, 'subscribe' => $subscribe]);
     }
 }
