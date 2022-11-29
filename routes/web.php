@@ -46,6 +46,10 @@ Route::get('/your-food', function () {
     return view('yourfood_page');
 });
 
+Route::get('/payment', function () {
+    return view('payment_page');
+});
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
