@@ -43,4 +43,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /// have one to many with subscribe
+    public function subscribe()
+    {
+        return $this->hasMany(SubscribeModel::class, 'user_id', 'id')->withDefault();
+    }
+
+    /// have one to many with payment
+    public function payment()
+    {
+        return $this->hasMany(PaymentModel::class, 'user_id', 'id')->withDefault();
+    }
+
 }
