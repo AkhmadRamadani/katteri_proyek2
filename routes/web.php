@@ -48,6 +48,10 @@ Route::get('/payment', function () {
     return view('payment_page');
 });
 
+Route::get('/admin', function () {
+    return view('home_admin');
+});
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
