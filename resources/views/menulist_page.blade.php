@@ -175,7 +175,7 @@
                                                                             <div class="receipe-ratings text-center my-5">
                                                                                 <a href="assets/img/menu/menu-item-2.png"
                                                                                     class="glightbox"><img
-                                                                                        src="assets/img/menu/menu-item-2.png"
+                                                                                        src="{{ $makanan->menu->foto }}"
                                                                                         class="menu-img img-fluid"
                                                                                         alt=""></a>
                                                                             </div>
@@ -183,7 +183,7 @@
                                                                     </div>
 
                                                                     <div class="row" style="margin-bottom: 60px;">
-                                                                        <div class="col-12 col-lg-8">
+                                                                        <div class="col-12 col-lg-6">
                                                                             <!-- Single Preparation Step -->
                                                                             <div class="single-preparation-step d-flex">
                                                                                 {{-- <h4>01.</h4> --}}
@@ -193,7 +193,7 @@
                                                                         </div>
 
                                                                         <!-- Ingredients -->
-                                                                        <div class="col-12 col-lg-4">
+                                                                        <div class="col-12 col-lg-6">
                                                                             <div class="ingredients">
                                                                                 <h4>Nutritional Facts</h4>
 
@@ -213,7 +213,7 @@
                                                 </div>
                                             </section><!-- End Menu Section -->
                                         </main><!-- End #main -->
-                                    </div>ƒ
+                                    </div>
                                 </div>
                             </div>
                         </div>

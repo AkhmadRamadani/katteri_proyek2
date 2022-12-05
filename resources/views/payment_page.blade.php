@@ -41,7 +41,7 @@
                                     <form action="" method="post" novalidate="novalidate">
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label>Jumlah Pembayaran :</label>
-                                            <h5>$100.00</h5>
+                                            <h5>@money($payment->tagihan)</h5>
                                         </div>
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label>Metode Pembayaran :</label>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="form-group"
                                             style="margin-bottom: 15px; display: flex; justify-content: center;">
-                                            <img src="assets\img\qris-example.jpg" style="width: 300px;">
+                                            <img src="{{ asset('assets\img\qris-example.jpg')}}" style="width: 300px;">
                                         </div>
 
                                         <div class="form-group" style="margin-bottom: 15px;">
@@ -88,10 +88,11 @@
                                         <h4 class="text-center">Payment Invoice</h4>
                                     </div>
                                     <hr>
-                                    <form action="" method="post" novalidate="novalidate">
+                                    <form action="{{ route('payment.store') }}" method="post" novalidate="novalidate" accept="">
+                                        @csrf
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label>Jumlah Pembayaran :</label>
-                                            <h5>$100.00</h5>
+                                            <h5>@money($payment->tagihan)</h5>
                                         </div>
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label>Metode Pembayaran :</label>
@@ -102,7 +103,7 @@
                                         </div>
                                         <div class="form-group"
                                             style="margin-bottom: 15px; display: flex; justify-content: center;">
-                                            <img src="assets\img\transfer.png" style="width: 400px;">
+                                            <img src="{{asset('assets\img\transfer.png')}}" style="width: 400px;">
                                         </div>
 
                                         <div class="form-group" style="margin-bottom: 15px;">

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuListController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\YourFoodController;
 use Illuminate\Support\Facades\Auth;
@@ -22,9 +24,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
-Route::get('/order', function () {
-    return view('order_page');
-});
+Route::resource('order', OrderController::class);
+Route::resource('payment', PaymentController::class);
 
 // Route::get('/login', function () {
 //     return view('login_page');
@@ -43,10 +44,6 @@ Route::get('/menu-detail', function () {
 Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/your-food', [YourFoodController::class, 'index']);
-
-Route::get('/payment', function () {
-    return view('payment_page');
-});
 
 Auth::routes();
 

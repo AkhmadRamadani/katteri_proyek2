@@ -26,7 +26,8 @@ class YourFoodController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'detail_pembeli', 'paket.jadwal_makanan', 'paket.jadwal_makanan.hari', 'paket.jadwal_makanan.menu')->first();
+        /// order by id 
+        $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'detail_pembeli', 'paket.jadwal_makanan', 'paket.jadwal_makanan.hari', 'paket.jadwal_makanan.menu')->orderBy('id', 'desc')->first();
 
 
         if ($subscribe != null) {

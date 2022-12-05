@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('subcription_id');
-            $table->string('bukti_pembayaran');
+            $table->string('bukti_pembayaran')->nullable()->default(null);
             $table->tinyInteger('status');
             $table->decimal('tagihan', 10, 2);
             $table->timestamps();

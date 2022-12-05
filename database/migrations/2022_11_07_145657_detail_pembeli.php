@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('no_telp_1');
-            $table->string('no_telp_2');
+            $table->string('no_telp_2')->nullable()->default(null);
             $table->string('kode_pos');
             $table->timestamps();
             $table->foreign('subscribe_id')->references('id')->on('subscribe')->onDelete('cascade');
