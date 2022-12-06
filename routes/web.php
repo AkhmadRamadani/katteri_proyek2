@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminMenuController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ManageUserController as AdminManageUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\OrderController;
@@ -50,6 +51,8 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('/admin', AdminMenuController::class);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+Route::resource('/admin/user', AdminManageUserController::class);
 
 

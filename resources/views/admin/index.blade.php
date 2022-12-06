@@ -2,7 +2,7 @@
 <html lang="zxx" class="js">
 
 <head>
-    <base href="../">
+    {{-- <base href="../"> --}}
     <meta charset="utf-8">
     <meta name="author" content="Softnio">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,33 +47,33 @@
                                 <li class="nk-menu-item">
                                     <a href="/" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
-                                        <span class="nk-menu-text">Default Dashboard</span>
+                                        <span class="nk-menu-text">Home Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/sopir" class="nk-menu-link">
+                                    <a href="/admin/user" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">Sopir Dashboard</span>
+                                        <span class="nk-menu-text">Manage User</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/angkot" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-truck"></em></span>
-                                        <span class="nk-menu-text">Angkot Dashboard</span>
+                                    <a href="/admin/paket" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-package"></em></span>
+                                        <span class="nk-menu-text">Manage Package</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/perjalanan" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-navigate"></em></span>
-                                        <span class="nk-menu-text">Perjalanan Dashboard</span>
+                                    <a href="/admin/subscription" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-tags-fill"></em></span>
+                                        <span class="nk-menu-text">Manage Subscription</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
+                                {{-- <li class="nk-menu-item">
                                     <a href="/trayek" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-home"></em></span>
-                                        <span class="nk-menu-text">Trayek Dashboard</span>
+                                        <span class="nk-menu-text">Manage Trayek</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li><!-- .nk-menu-item --> --}}
 
 
                             </ul><!-- .nk-menu -->

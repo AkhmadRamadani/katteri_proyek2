@@ -6,13 +6,12 @@
         </div>
         <div class="nk-header-brand d-xl-none">
             <a href="html/index.html" class="logo-link">
-                <img class="logo-light logo-img" src="./images/logo.png"
-                    srcset="./images/logo2x.png 2x" alt="logo">
-                <img class="logo-dark logo-img" src="./images/logo-dark.png"
-                    srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
+                <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x"
+                    alt="logo-dark">
             </a>
         </div><!-- .nk-header-brand -->
-        {{-- <div class="nk-header-news d-none d-xl-block">
+        <div class="nk-header-news d-none d-xl-block">
             <div class="nk-news-list">
                 <a class="nk-news-item" href="#">
                     <div class="nk-news-icon">
@@ -25,7 +24,7 @@
                     </div>
                 </a>
             </div>
-        </div><!-- .nk-header-news --> --}}
+        </div><!-- .nk-header-news -->
         <div class="nk-header-tools">
             <ul class="nk-quick-nav">
                 <li class="dropdown user-dropdown">
@@ -36,34 +35,37 @@
                             </div>
                             <div class="user-info d-none d-md-block">
                                 <div class="user-status">Administrator</div>
-                                <div class="user-name dropdown-indicator">{{ $user->name}}</div>
+                                <div class="user-name dropdown-indicator">{{ $user->name }}</div>
                             </div>
                         </div>
                     </a>
-                    <div
-                        class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
+                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
                         <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                             <div class="user-card">
                                 <div class="user-avatar">
                                     <span>{{ substr(preg_replace('/\b(\w)|./', '$1', $user->name), 0, 2) }}</span>
                                 </div>
                                 <div class="user-info">
-                                    <span class="lead-text">{{ $user->name}}</span>
-                                    <span class="sub-text">{{ $user->email}}</span>
+                                    <span class="lead-text">{{ $user->name }}</span>
+                                    <span class="sub-text">{{ $user->email }}</span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="dropdown-inner">
-                            <ul class="link-list">
-                                <li><a href="{{ route('logout') }}"><em
-                                            class="icon ni ni-signout"></em><span>Sign
-                                            out</span></a></li>
-                            </ul>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <ul class="link-list">
+                                    <li>
+                                        <input type="submit" class="btn-book-a-table" value="Logout">
+                                    </li>
+                                </ul>
+                            </form>
+
                         </div>
                     </div>
                 </li><!-- .dropdown -->
-                
+
             </ul><!-- .nk-quick-nav -->
         </div><!-- .nk-header-tools -->
     </div><!-- .nk-header-wrap -->
