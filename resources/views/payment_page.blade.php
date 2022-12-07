@@ -38,7 +38,9 @@
                                         <h4 class="text-center">Payment Invoice</h4>
                                     </div>
                                     <hr>
-                                    <form action="" method="post" novalidate="novalidate">
+                                    <form action="{{ route('payment.update', $payment->id) }}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label>Jumlah Pembayaran :</label>
                                             <h5>@money($payment->tagihan)</h5>
@@ -88,8 +90,9 @@
                                         <h4 class="text-center">Payment Invoice</h4>
                                     </div>
                                     <hr>
-                                    <form action="{{ route('payment.store') }}" method="post" novalidate="novalidate" accept="">
+                                    <form action="{{ route('payment.update', $payment->id) }}" method="post" novalidate="novalidate" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT')
                                         <div class="form-group" style="margin-bottom: 15px;">
                                             <label>Jumlah Pembayaran :</label>
                                             <h5>@money($payment->tagihan)</h5>
