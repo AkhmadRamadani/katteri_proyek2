@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ManageUserController as AdminManageUserController;
+use App\Http\Controllers\Admin\ManagePackageController as AdminManagePackageController;
+use App\Http\Controllers\Admin\ManageSubscriptionController as AdminManageSubscriptionController;
+use App\Http\Controllers\Admin\ManageMenusController as AdminManageMenusController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuListController;
 use App\Http\Controllers\OrderController;
@@ -55,4 +58,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::resource('/admin/user', AdminManageUserController::class);
 
+Route::resource('/admin/menu', AdminManageMenusController::class);
 
+Route::resource('/admin/paket', AdminManagePackageController::class);
+
+Route::resource('/admin/subscription', AdminManageSubscriptionController::class);

@@ -25,8 +25,8 @@
             <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-menu-trigger">
-                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none"
-                            data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em
+                                class="icon ni ni-arrow-left"></em></a>
                         <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex"
                             data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                     </div>
@@ -56,11 +56,21 @@
                                         <span class="nk-menu-text">Manage User</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="/admin/paket" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-package"></em></span>
-                                        <span class="nk-menu-text">Manage Package</span>
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-package"></em></span>
+                                        <span class="nk-menu-text">Manage Items</span>
                                     </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="/admin/menu" class="nk-menu-link"><span
+                                                    class="nk-menu-text">Manage Menus</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="/admin/paket" class="nk-menu-link"><span
+                                                    class="nk-menu-text">Manage Package</span></a>
+                                        </li>
+                                    </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="/admin/subscription" class="nk-menu-link">
