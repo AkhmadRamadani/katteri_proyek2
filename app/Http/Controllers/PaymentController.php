@@ -75,7 +75,17 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        /// get fileToUpload from request
+        $fileToUpload = $request->file('fileToUpload')->store('payment', 'public');
+
+        /// get data from request
+        $payment = PaymentModel::find($id);
+        $payment->bukti_pembayaran = $fileToUpload;
+        $payment->status = 1;
+
+        $payment->save();
+
+        return redirect('/your-food');
     }
 
     /**

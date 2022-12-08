@@ -17,7 +17,7 @@
                             <h1 class="display-2 text-white">Hello {{ $user->name }}</h1>
                             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made
                                 with your work and manage your projects or assigned tasks</p>
-                            <a href="#!" class="btn btn-info">See Your Food</a>
+                            <a href="/your-food" class="btn btn-info">See Your Food</a>
                         </div>
                     </div>
                 </div>
@@ -40,9 +40,9 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    
+
                                     @foreach ($subscribe as $count => $item)
-                                        <h6 class="heading-small text-muted mb-4">Transaction {{ $count+1 }}</h6>
+                                        <h6 class="heading-small text-muted mb-4">Transaction {{ $count + 1 }}</h6>
                                         <div class="pl-lg-4">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -54,29 +54,40 @@
                                                         <div>
                                                             <h1>{{ $item->paket->nama_paket }}</h1>
                                                             <h3 style="color: grey;">
-                                                                {{ \Carbon\Carbon::parse($item->created_at)->format('l, jS \\of F Y') }}</h3>
+                                                                {{ \Carbon\Carbon::parse($item->created_at)->format('l, jS \\of F Y') }}
+                                                            </h3>
                                                             </h3>
                                                             <p>
                                                                 {{ $item->paket->deskripsi }}
                                                             </p>
                                                             <h3 style="color: red;">
-                                                                 @money($item->paket->harga_paket) 
+                                                                @money($item->paket->harga_paket)
                                                             </h3>
                                                             @if ($item->payment->status == 0)
-                                                                <h3 style="color: red;">
-                                                                    Status : Menunggu Pembayaran
-                                                                </h3>
-                                                                
+                                                                <div class="container px-0">
+                                                                    <div class="row">
+                                                                        <div class="col-10">
+
+                                                                            <h3 style="color: red;">
+                                                                                Status : Menunggu Pembayaran
+                                                                            </h3>
+                                                                        </div>
+                                                                        <div class="col-2">
+
+                                                                            <a href="{{ url('/payment') }}/{{ $item->id }}"
+                                                                                class="btn btn-info btn-md">Bayar
+                                                                                Sekarang</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             @elseif($item->payment->status == 1)
                                                                 <h3 style="color: orange;">
                                                                     Status : Menunggu Konfirmasi Admin
                                                                 </h3>
-
                                                             @else
                                                                 <h3 style="color: green;">
                                                                     Status : Berhasil
                                                                 </h3>
-                                                                
                                                             @endif
                                                         </div>
                                                     </div>
