@@ -19,7 +19,7 @@ class MenuSeeder extends Seeder
             'nama_menu' => 'Nasi Goreng',
             'deskripsi' => 'Nasi Goreng Biasa dengan telur dan ayam goreng yang digoreng bersama nasi putih yang sudah dihaluskan dan diiris-iris kecil',
             'qr_code' => 'nasi-goreng.png',
-            'foto' => 'assets/img/menu/menu-item-1.png',
+            'foto' => 'menus/menu-item-1.png',
             'nutrition_facts' => ' <html>
             <head>
                 <title>My First Web Page</title>
@@ -36,7 +36,7 @@ class MenuSeeder extends Seeder
             'nama_menu' => 'Nasi Goreng Spesial',
             'deskripsi' => 'Nasi Goreng Biasa dengan telur dan ayam goreng yang digoreng bersama nasi putih yang sudah dihaluskan dan diiris-iris kecil',
             'qr_code' => 'nasi-goreng-spesial.png',
-            'foto' => 'assets/img/menu/menu-item-2.png',
+            'foto' => 'menus/menu-item-2.png',
             'nutrition_facts' => ' <html>
             <head>
                 <title>My First Web Page</title>
@@ -53,7 +53,7 @@ class MenuSeeder extends Seeder
             'nama_menu' => 'Nasi Goreng Apa Aja',
             'deskripsi' => 'Nasi Goreng Biasa dengan telur dan ayam goreng yang digoreng bersama nasi putih yang sudah dihaluskan dan diiris-iris kecil',
             'qr_code' => 'nasi-goreng-spesial.png',
-            'foto' => 'assets/img/menu/menu-item-3.png',
+            'foto' => 'menus/menu-item-3.png',
             'nutrition_facts' => ' <html>
             <head>
                 <title>My First Web Page</title>
@@ -70,7 +70,7 @@ class MenuSeeder extends Seeder
             'nama_menu' => 'Nasi Goreng Biasa',
             'deskripsi' => 'Nasi Goreng Biasa dengan telur dan ayam goreng yang digoreng bersama nasi putih yang sudah dihaluskan dan diiris-iris kecil',
             'qr_code' => 'nasi-goreng-spesial.png',
-            'foto' => 'assets/img/menu/menu-item-4.png',
+            'foto' => 'menus/menu-item-4.png',
             'nutrition_facts' => ' <html>
             <head>
                 <title>My First Web Page</title>

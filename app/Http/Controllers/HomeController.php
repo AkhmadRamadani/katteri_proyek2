@@ -24,8 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $paket = PaketModel::all();
+        /// redirect to admin dashboard if user is admin
         $user = auth()->user();
+        if($user != null && $user->role == 1){
+            return redirect()->route('admin');
+        }
+        $paket = PaketModel::all();
         return view('home', ['paket' => $paket, 'user' => $user]);
     }
 }

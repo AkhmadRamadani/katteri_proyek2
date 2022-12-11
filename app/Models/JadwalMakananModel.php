@@ -10,6 +10,12 @@ class JadwalMakananModel extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     protected $table = 'jadwal_makanan';
+    protected $fillable = [
+        'paket_id',
+        'hari_id',
+        'menu_id',
+        
+    ];
 
     /// have one to many with menu
     public function menu()
