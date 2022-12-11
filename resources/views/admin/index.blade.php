@@ -15,6 +15,12 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/dashlite.css?ver=2.9.1') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets/admin/css/theme.css?ver=2.9.1') }}">
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -25,8 +31,8 @@
             <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-menu-trigger">
-                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em
-                                class="icon ni ni-arrow-left"></em></a>
+                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none"
+                            data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
                         <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex"
                             data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                     </div>
@@ -58,13 +64,13 @@
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-package"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-package"></em></span>
                                         <span class="nk-menu-text">Manage Items</span>
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="/admin/menu" class="nk-menu-link"><span
-                                                    class="nk-menu-text">Manage Menus</span></a>
+                                            <a href="/admin/menu" class="nk-menu-link"><span class="nk-menu-text">Manage
+                                                    Menus</span></a>
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="/admin/paket" class="nk-menu-link"><span

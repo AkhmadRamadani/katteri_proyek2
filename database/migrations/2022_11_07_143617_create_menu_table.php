@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_menu');
             $table->string('deskripsi');
-            $table->string('qr_code');
+            $table->string('qr_code')->nullable()->default(null);
             $table->string('foto');
             $table->longText('nutrition_facts');
             $table->timestamps();

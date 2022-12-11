@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->register(\SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class);
     }
 
     /**
@@ -27,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('money', function ($amount) {
             return "<?php echo 'Rp' . number_format($amount, 2); ?>";
         });
+        $this->app->alias(\SimpleSoftwareIO\QrCode\Facades\QrCode::class, 'QrCode');
     }
 }
