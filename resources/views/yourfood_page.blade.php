@@ -83,7 +83,7 @@
                                                                                 style="background-color: white; padding: 20px; border-radius: 20px; display: flex; 
                                                                                 align-items: center;
                                                                                 justify-content: center;">
-                                                                                <img src="{{$item->menu->foto }}"
+                                                                                <img src="{{asset('storage/'.$item->menu->foto) }}"
                                                                                     class="menu-img img-fluid"
                                                                                     alt=""
                                                                                     style="width: 150px; height: 150px; margin-right: 30px">

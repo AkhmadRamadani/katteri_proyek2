@@ -48,7 +48,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group focused"
                                                         style="background-color: white; padding: 20px; border-radius: 20px; display: flex">
-                                                        <img src="assets/img/menu/menu-item-2.png"
+                                                        <img src="{{ asset('storage/'.$item->paket->foto) }}"
                                                             class="menu-img img-fluid" alt=""
                                                             style="width: 250px; margin-right: 30px">
                                                         <div>
