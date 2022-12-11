@@ -166,7 +166,11 @@
                                         @if ($user->subscribe->payment->status == 0)
                                             <span class="badge badge-danger">Not Paid</span>
                                         @elseif ($user->subscribe->payment->status == 1)
-                                            <span class="badge badge-success">Paid</span>
+                                            <span class="badge badge-warning">Waiting for Confirmationd</span>
+                                        @elseif ($user->subscribe->payment->status == 2)
+                                            <span class="badge badge-success">Confirmed</span>
+                                        @elseif ($user->subscribe->payment->status == 3)
+                                            <span class="badge badge-danger">Payment Rejected</span>
                                         @endif
                                     @else
                                         <span class="badge badge-danger">Not subscribe yet</span>

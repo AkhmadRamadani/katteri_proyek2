@@ -11,7 +11,7 @@
                     alt="logo-dark">
             </a>
         </div><!-- .nk-header-brand -->
-        <div class="nk-header-news d-none d-xl-block">
+        {{-- <div class="nk-header-news d-none d-xl-block">
             <div class="nk-news-list">
                 <a class="nk-news-item" href="#">
                     <div class="nk-news-icon">
@@ -24,7 +24,7 @@
                     </div>
                 </a>
             </div>
-        </div><!-- .nk-header-news -->
+        </div><!-- .nk-header-news --> --}}
         <div class="nk-header-tools">
             <ul class="nk-quick-nav">
                 <li class="dropdown user-dropdown">

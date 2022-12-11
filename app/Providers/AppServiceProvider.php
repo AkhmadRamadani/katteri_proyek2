@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('money', function ($amount) {
             return "<?php echo 'Rp' . number_format($amount, 2); ?>";
         });
+        /// create function for abbreviate string with only 2 characters and uppercase
+        Blade::directive('abbr', function ($string) {
+            return "<?php echo ucfirst(str_limit($string, 0, 2)); ?>";
+        });
+
         $this->app->alias(\SimpleSoftwareIO\QrCode\Facades\QrCode::class, 'QrCode');
     }
 }
