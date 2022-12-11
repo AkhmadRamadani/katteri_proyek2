@@ -17,13 +17,24 @@
                                             data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                         <div class="toggle-expand-content" data-content="pageMenu">
                                             <ul class="nk-block-tools g-3">
+
                                                 <li>
                                                     <div class="form-control-wrap">
                                                         <div class="form-icon form-icon-right">
                                                             <em class="icon ni ni-search"></em>
                                                         </div>
-                                                        <input type="text" class="form-control" id="default-04"
-                                                            placeholder="Quick search by id">
+                                                        <form class="form-inline" action="{{ route('menu.index') }}">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Search"
+                                                                    name="search">
+                                                            </div>
+                                                            <div class="mx-1">
+                                                                <button type="submit" class="btn btn-primary">Search</button>
+
+                                                            </div>
+                                                        </form>
+
+
                                                     </div>
                                                 </li>
                                                 <li class="nk-block-tools-opt">
@@ -50,39 +61,14 @@
                                                 <div class="nk-tb-col"><span>Description</span></div>
                                                 <div class="nk-tb-col"><span>Nutrition Facts</span></div>
                                                 <div class="nk-tb-col"><span>Actions</span></div>
-                                                <!-- <div class="nk-tb-col nk-tb-col-tools">
-                                                                                            <ul class="nk-tb-actions gx-1 my-n1">
-                                                                                                <li class="mr-n1">
-                                                                                                    <div class="dropdown">
-                                                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                                                                            data-toggle="dropdown"><em
-                                                                                                                class="icon ni ni-more-h"></em></a>
-                                                                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                                                                            <ul class="link-list-opt no-bdr">
-                                                                                                                <li><a href="#"><em
-                                                                                                                            class="icon ni ni-edit"></em><span>Edit
-                                                                                                                            Selected</span></a></li>
-                                                                                                                <li><a href="#"><em
-                                                                                                                            class="icon ni ni-trash"></em><span>Remove
-                                                                                                                            Selected</span></a></li>
-                                                                                                                <li><a href="#"><em
-                                                                                                                            class="icon ni ni-bar-c"></em><span>Update
-                                                                                                                            Stock</span></a></li>
-                                                                                                                <li><a href="#"><em
-                                                                                                                            class="icon ni ni-invest"></em><span>Update
-                                                                                                                            Price</span></a></li>
-                                                                                                            </ul>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div> -->
+
                                             </div><!-- .nk-tb-item -->
                                             @foreach ($menus as $item)
                                                 <div class="nk-tb-item">
                                                     <div class="nk-tb-col tb-col-sm">
                                                         <span class="tb-product">
-                                                            <img src="{{ asset('storage/'. $item->foto) }}" alt="" class="thumb">
+                                                            <img src="{{ asset('storage/' . $item->foto) }}" alt=""
+                                                                class="thumb">
                                                             <span class="title">{{ $item->nama_menu }}</span>
                                                         </span>
                                                     </div>
@@ -107,16 +93,17 @@
                                                                             class="icon ni ni-more-h"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-right">
                                                                         <ul class="link-list-opt no-bdr">
-                                                                            <li><a href="#"><em
+                                                                            {{-- Edit product with modal --}}
+                                                                            <li><a href="#" data-toggle="modal"
+                                                                                    data-target="#updateModal{{ $item->id }}"><em
                                                                                         class="icon ni ni-edit"></em><span>Edit
                                                                                         Product</span></a></li>
-                                                                            <li><a href="#"><em
-                                                                                        class="icon ni ni-eye"></em><span>View
+                                                                            <li><a href="#" data-toggle="modal"
+                                                                                    data-target="#detail{{ $item->id }}">
+                                                                                    <em class="icon ni ni-eye"></em><span>View
                                                                                         Product</span></a></li>
-                                                                            <li><a href="#"><em
-                                                                                        class="icon ni ni-activity-round"></em><span>Product
-                                                                                        Orders</span></a></li>
-                                                                            <li><a href="#"><em
+                                                                            <li><a href="#" data-toggle="modal"
+                                                                                    data-target="#deleteModal{{ $item->id }}"><em
                                                                                         class="icon ni ni-trash"></em><span>Remove
                                                                                         Product</span></a></li>
                                                                         </ul>
@@ -126,58 +113,299 @@
                                                         </ul>
                                                     </div>
                                                 </div><!-- .nk-tb-item -->
+
+                                                {{-- Delete Modal --}}
+                                                <div class="modal fade
+                                                @if ($errors->any()) show @endif
+                                                "
+                                                    tabindex="-1" role="dialog" id="deleteModal{{ $item->id }}">
+                                                    <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <a href="#" class="close" data-dismiss="modal"><em
+                                                                    class="icon ni ni-cross-sm"></em></a>
+                                                            <form action="{{ route('menu.destroy', $item->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Delete Menu</h5>
+                                                                </div>
+                                                                <div
+                                                                    class="modal-body
+                                                                @if ($errors->any()) show @endif
+                                                                ">
+                                                                    <div
+                                                                        class="form-group
+                                                                    @if ($errors->any()) is-invalid @endif
+                                                                    ">
+                                                                        <label
+                                                                            class="form-label
+                                                                        @if ($errors->any()) is-invalid @endif
+                                                                        "
+                                                                            for="default-01">Are you sure want to delete
+                                                                            this menu?</label>
+                                                                        <div class="form-control-wrap">
+                                                                            <input type="text" class="form-control"
+                                                                                id="default-01" value="{{ $item->nama_menu }}"
+                                                                                disabled>
+                                                                        </div>
+                                                                        @error('nama_menu')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer bg-light">
+                                                                    <button type="button" class="btn btn-lg btn-primary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-lg btn-danger">Delete</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                {{-- Update Modal --}}
+                                                <div class="modal fade" tabindex="-1" role="dialog"
+                                                    id="updateModal{{ $item->id }}">
+                                                    <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+
+                                                        <div class="modal-content">
+                                                            <a href="#" class="close" data-dismiss="modal"><em
+                                                                    class="icon ni ni-cross-sm"></em></a>
+                                                            <form action="{{ route('menu.update', $item->id) }}"
+                                                                method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <div class="modal-header">
+
+                                                                    <h5 class="modal-title">Update Menu</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+
+                                                                    <div class="row g-4">
+
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label"
+                                                                                    for="full-name">Name</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control"
+                                                                                        id="full-name" name="nama_menu"
+                                                                                        value="{{ $item->nama_menu }}">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div
+                                                                                class="form-group
+                                                                                @error('deskripsi') is-invalid @enderror">
+                                                                                <label
+                                                                                    class="form-label
+                                                                                    @error('deskripsi') is-invalid-label @enderror"
+                                                                                    for="default-06">Description</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <textarea class="form-control form-control-sm" id="default-06" name="deskripsi_menu" rows="3">{{ $item->deskripsi }}</textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div
+                                                                                class="form-group
+                                                                                @error('foto') is-invalid @enderror">
+                                                                                <label
+                                                                                    class="form-label
+                                                                                    @error('foto') is-invalid-label @enderror"
+                                                                                    for="default-06">Image</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="file" class="form-control"
+                                                                                        id="default-06" name="foto">
+                                                                                </div>
+                                                                                <div class="my-2">
+
+                                                                                    <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                                        alt="" width="100px">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="col-lg-12">
+                                                                            <div
+                                                                                class="form-group
+                                                                            @error('deskripsi') is-invalid @enderror">
+                                                                                <label
+                                                                                    class="form-label
+                                                                                @error('deskripsi') is-invalid-label @enderror"
+                                                                                    for="default-06">Nutrition Facts</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <textarea class="ckeditor form-control form-control-sm" id="ckeditor{{ $item->id }}" name="nutrition_facts">
+                                                                                        {!! $item->nutrition_facts !!}
+                                                                                    </textarea>
+                                                                                </div>
+                                                                                @error('deskripsi')
+                                                                                    <div class="form-note text-danger">
+                                                                                        {{ $message }}
+                                                                                    </div>
+                                                                                @enderror
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                                <div class="modal-footer bg-light">
+                                                                    {{-- <span class="sub-text">Modal Footer Text</span> --}}
+                                                                    <button type="button" class="btn btn-lg btn-primary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-lg btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal End -->
+                                                {{-- Detail modal --}}
+                                                <div class="modal fade " tabindex="-1" role="dialog"
+                                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                                                    id="detail{{ $item->id }}">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Detail Menu</h5>
+                                                                <a href="#" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <em
+                                                                        class="icon ni ni
+                                                                   cross  "></em>
+                                                                </a>
+                                                            </div>
+                                                            <div
+                                                                class="modal-body show
+                                                            ">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div
+                                                                            class="form-group
+                                                                        @error('nama_menu') is-invalid @enderror">
+                                                                            <label
+                                                                                class="form-label
+                                                                                @error('nama_menu') is-invalid-label @enderror"
+                                                                                for="default-06">Name</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="default-06" name="nama_menu"
+                                                                                    value="{{ $item->nama_menu }}" disabled>
+                                                                            </div>
+                                                                            @error('nama_menu')
+                                                                                <div class="form-note text-danger">
+                                                                                    {{ $message }}
+                                                                                </div>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div
+                                                                            class="form-group
+                                                                        @error('deskripsi') is-invalid @enderror">
+                                                                            <label
+                                                                                class="form-label
+                                                                                @error('deskripsi') is-invalid-label @enderror"
+                                                                                for="default-06">Description</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <textarea class="form-control" id="default-06" name="deskripsi" disabled>{{ $item->deskripsi }}</textarea>
+                                                                            </div>
+                                                                            @error('deskripsi')
+                                                                                <div class="form-note text-danger">
+                                                                                    {{ $message }}
+                                                                                </div>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div
+                                                                            class="form-group
+                                                                        @error('nutrition_facts') is-invalid @enderror">
+                                                                            <label
+                                                                                class="form-label
+                                                                                @error('nutrition_facts') is-invalid-label @enderror"
+                                                                                for="default-06">Nutrition Fact</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <textarea class="ckeditor form-control" id="default-06" name="nutrition_facts" disabled>  {!! $item->nutrition_facts !!}</textarea>
+                                                                            </div>
+                                                                            @error('nutrition_facts')
+                                                                                <div class="form-note text-danger">
+                                                                                    {{ $message }}
+                                                                                </div>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{-- <div class="form-inline my-3"> --}}
+                                                                    <div
+                                                                        class="form-group
+                                                                @error('foto') is-invalid @enderror">
+                                                                        <label
+                                                                            class="form-label
+                                                                        @error('foto') is-invalid-label @enderror"
+                                                                            for="default-06">Image</label>
+                                                                        <div class="form-control-wrap">
+                                                                            <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                                alt="" width="100px">
+                                                                        </div>
+                                                                        @error('foto')
+                                                                            <div class="form-note text-danger">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mx-2"></div>
+
+                                                                    <div
+                                                                        class="form-group
+                                                                @error('qr_code') is-invalid @enderror">
+                                                                        <label
+                                                                            class="form-label
+                                                                        @error('qr_code') is-invalid-label @enderror"
+                                                                            for="default-06">QR-Code</label>
+                                                                        <div class="form-control-wrap">
+                                                                            <img src="{{ asset('storage/' . $item->qr_code) }}"
+                                                                                alt="" width="100px">
+                                                                        </div>
+                                                                        @error('qr_code')
+                                                                            <div class="form-note text-danger">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                            {{-- </div> --}}
+                                                            <div class="modal-footer bg-light">
+                                                                <button type="button" class="btn btn-lg btn-primary"
+                                                                    data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal End -->
                                             @endforeach
 
                                         </div><!-- .nk-tb-list -->
                                     </div>
                                     <div class="card-inner">
-                                        <div class="nk-block-between-md g-3">
-                                            <div class="g">
-                                                <ul class="pagination justify-content-center justify-content-md-start">
-                                                    <li class="page-item"><a class="page-link" href="#"><em
-                                                                class="icon ni ni-chevrons-left"></em></a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><span class="page-link"><em
-                                                                class="icon ni ni-more-h"></em></span></li>
-                                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#"><em
-                                                                class="icon ni ni-chevrons-right"></em></a></li>
-                                                </ul><!-- .pagination -->
-                                            </div>
-                                            <div class="g">
-                                                <div
-                                                    class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
-                                                    <div>Page</div>
-                                                    <div>
-                                                        <select class="form-select" data-search="on"
-                                                            data-dropdown="xs center">
-                                                            <option value="page-1">1</option>
-                                                            <option value="page-2">2</option>
-                                                            <option value="page-4">4</option>
-                                                            <option value="page-5">5</option>
-                                                            <option value="page-6">6</option>
-                                                            <option value="page-7">7</option>
-                                                            <option value="page-8">8</option>
-                                                            <option value="page-9">9</option>
-                                                            <option value="page-10">10</option>
-                                                            <option value="page-11">11</option>
-                                                            <option value="page-12">12</option>
-                                                            <option value="page-13">13</option>
-                                                            <option value="page-14">14</option>
-                                                            <option value="page-15">15</option>
-                                                            <option value="page-16">16</option>
-                                                            <option value="page-17">17</option>
-                                                            <option value="page-18">18</option>
-                                                            <option value="page-19">19</option>
-                                                            <option value="page-20">20</option>
-                                                        </select>
-                                                    </div>
-                                                    <div>OF 102</div>
-                                                </div>
-                                            </div><!-- .pagination-goto -->
-                                        </div><!-- .nk-block-between -->
+
+                                        {{ $menus->links('pagination::bootstrap-4') }}
                                     </div>
                                 </div>
                             </div>
@@ -226,124 +454,24 @@
                                                 <textarea class="ckeditor form-control" name="nutrition_facts"></textarea>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="calories">Calories</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="calories">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="calories-from-fat">Calories From Fat</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="calories-from-fat">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="nutrients">Nutrients</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="nutrients">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="total-fat">Total Fat</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="total-fat">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="cholesterol">Cholesterol</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="cholesterol">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="sodium">Sodium</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="sodium">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="fiber">Fiber</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="fiber">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="sugars">Sugars</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="sugars">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="protein">Protein</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="protein">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="vitamin-a">Vitamin A</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="vitamin-a">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="vitamin-c">Vitamin C</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="vitamin-c">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="iron">Iron</label>
-                                                <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="iron">
-                                                </div>
-                                            </div>
-                                        </div> --}}
+
 
 
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="form-label" for="foto">Photo</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="file" class="form-control" id="foto" name="foto">
+                                                    <input type="file" class="form-control" id="foto"
+                                                        name="foto">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {{-- <div class="col-12">
-                                            <label class="form-label">QR Code</label>
-                                            <div class="upload-zone small bg-lighter my-2">
-                                                <div class="dz-message">
-                                                    <span class="dz-message-text">Drag and drop file</span>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+
 
                                         <div class="col-12">
-                                            <button type="submit"  class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add
+                                            <button type="submit" class="btn btn-primary"><em
+                                                    class="icon ni ni-plus"></em><span>Add
                                                     New</span></button>
                                         </div>
                                     </div>

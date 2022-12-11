@@ -18,6 +18,11 @@ class ManageMenusController extends Controller
      */
     public function index()
     {
+        /// search menu by name
+        if (request()->has('search')) {
+            $menus = MenuModel::where('nama_menu', 'like', '%' . request()->search . '%')->paginate(10);
+            return view('admin.views.package.manage_menus', ['menus' => $menus]);
+        }
         // menu with pagination
         $menus = MenuModel::paginate(10);
         return view('admin.views.package.manage_menus', ['menus' => $menus]);
@@ -104,7 +109,28 @@ class ManageMenusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // if user upload new image
+        if ($request->hasFile('foto')) {
+            $fileToUpload = $request->file('foto')->store('menus', 'public');
+
+            $menu = MenuModel::find($id);
+            $menu->nama_menu = $request->nama_menu;
+            $menu->deskripsi = $request->deskripsi_menu;
+            $menu->nutrition_facts = $request->nutrition_facts;
+            $menu->foto = $fileToUpload;
+            $menu->save();
+
+            return redirect()->route('menu.index');
+        } else{
+            $menu = MenuModel::find($id);
+            $menu->nama_menu = $request->nama_menu;
+            $menu->deskripsi = $request->deskripsi_menu;
+            $menu->nutrition_facts = $request->nutrition_facts;
+            $menu->save();
+
+            return redirect()->route('menu.index');
+        }
+        
     }
 
     /**
@@ -115,6 +141,9 @@ class ManageMenusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = MenuModel::find($id);
+        $menu->delete();
+
+        return redirect()->route('menu.index');
     }
 }
