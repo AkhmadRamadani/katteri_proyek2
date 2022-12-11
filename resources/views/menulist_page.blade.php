@@ -77,7 +77,7 @@
                                                 @foreach ($menu as $makanan)
                                                     <a data-toggle="modal"
                                                         data-target="#detailModal{{ $makanan->id }}"><img
-                                                            src="{{ $makanan->menu->foto }}" class="menu-img img-fluid"
+                                                            src="{{ asset('storage/'.$makanan->menu->foto) }}" class="menu-img img-fluid"
                                                             alt=""></a>
                                                     <h4>{{ Str::limit($makanan->menu->nama_menu, 12) }}</h4>
                                                     <p class="ingredients">
@@ -175,7 +175,7 @@
                                                                             <div class="receipe-ratings text-center my-5">
                                                                                 <a href="assets/img/menu/menu-item-2.png"
                                                                                     class="glightbox"><img
-                                                                                        src="{{ $makanan->menu->foto }}"
+                                                                                        src="{{ asset('storage/'.$makanan->menu->foto) }}"
                                                                                         class="menu-img img-fluid"
                                                                                         alt=""></a>
                                                                             </div>

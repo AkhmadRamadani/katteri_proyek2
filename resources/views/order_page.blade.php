@@ -133,7 +133,7 @@
                                             value="{{ $item->id }}">
                                         <label for="{{ $item->id }}">
                                             <br><br>
-                                            <img src="{{ $item->foto }}" class="menu-img img-fluid" alt=""
+                                            <img src="{{asset('storage/'. $item->foto )}}" class="menu-img img-fluid" alt=""
                                                 style="margin-bottom: 10px;">
                                             <h5>{{ $item->nama_paket }}</h5>
                                             <h2>
