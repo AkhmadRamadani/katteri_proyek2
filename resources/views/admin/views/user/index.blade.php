@@ -161,11 +161,15 @@
                                 </div>
                                 <div class="nk-tb-col tb-col-md">
                                     {{-- if payment status == 0 is red with text not paid --}}
-
-                                    @if ($user->subscribe->payment->status == 0)
-                                        <span class="badge badge-danger">Not Paid</span>
-                                    @elseif ($user->subscribe->payment->status == 1)
-                                        <span class="badge badge-success">Paid</span>
+                                    {{-- if user had subsribe --}}
+                                    @if ($user->subscribe)
+                                        @if ($user->subscribe->payment->status == 0)
+                                            <span class="badge badge-danger">Not Paid</span>
+                                        @elseif ($user->subscribe->payment->status == 1)
+                                            <span class="badge badge-success">Paid</span>
+                                        @endif
+                                    @else
+                                        <span class="badge badge-danger">Not subscribe yet</span>
                                     @endif
                                 </div>
 
