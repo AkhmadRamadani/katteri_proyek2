@@ -43,11 +43,9 @@ Route::resource('payment', PaymentController::class);
 
 Route::get('/menu-list', [MenuListController::class, 'index'])->name('menu-list');
 
-/// menu detail route with id parameter
+/// menu detail route with id parameter and MenuListController.show
+Route::get('/menu-detail/{id}', [MenuListController::class, 'show'])->name('menu-detail');
 
-Route::get('/menu-detail/{id}', function () {
-    return view('menudetail_page');
-});
 
 Route::get('/profile', [ProfileController::class, 'index']);
 

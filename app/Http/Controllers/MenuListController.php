@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MenuModel;
 use App\Models\PaketModel;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,12 @@ class MenuListController extends Controller
         });
 
         return view('menulist_page', ['paket' => $paket]);
+    }
+
+    public function show($id)
+    {
+        $menu = MenuModel::find($id);
+
+        return view('menudetail_page', ['menu' => $menu]);
     }
 }
