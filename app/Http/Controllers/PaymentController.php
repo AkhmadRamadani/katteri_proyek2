@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PaymentModel;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -75,6 +76,7 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validator($request->all())->validate();
         /// get fileToUpload from request
         $fileToUpload = $request->file('fileToUpload')->store('payment', 'public');
 
@@ -87,6 +89,14 @@ class PaymentController extends Controller
 
         return redirect('/your-food');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'fileToUpload' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ]);
+    }
+
 
     /**
      * Remove the specified resource from storage.

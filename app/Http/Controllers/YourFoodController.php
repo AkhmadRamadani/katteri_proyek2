@@ -27,7 +27,11 @@ class YourFoodController extends Controller
     {
         $user = Auth::user();
         /// order by id 
-        $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'detail_pembeli', 'paket.jadwal_makanan', 'paket.jadwal_makanan.hari', 'paket.jadwal_makanan.menu')->orderBy('id', 'desc')->first();
+        /// below code and add with payment model and only show when the payment status is 2
+        $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'detail_pembeli', 'paket.jadwal_makanan', 'paket.jadwal_makanan.hari', 'paket.jadwal_makanan.menu', 'payment')->orderBy('id', 'desc')->whereHas('payment', function ($query) {
+            $query->where('status', 2);
+        })->first();
+        // $subscribe = SubscribeModel::where('user_id', $user->id)->with('paket', 'detail_pembeli', 'paket.jadwal_makanan', 'paket.jadwal_makanan.hari', 'paket.jadwal_makanan.menu')->orderBy('id', 'desc')->first();
 
 
         if ($subscribe != null) {
