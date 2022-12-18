@@ -47,12 +47,15 @@ class ManagePackageController extends Controller
     public function store(Request $request)
     {
         // store image 
-        $fileToUpload = $request->file('foto')->store('packages', 'public');
         $package = new PaketModel();
+
+        if ($request->hasFile('foto')) {
+            $fileToUpload = $request->file('foto')->store('packages', 'public');
+            $package->foto = $fileToUpload;
+        }
         $package->nama_paket = $request->nama_paket;
         $package->deskripsi = $request->deskripsi_paket;
         $package->harga_paket = $request->harga_paket;
-        $package->foto = $fileToUpload;
         $package->save();
         return redirect()->route('paket.index');
     }

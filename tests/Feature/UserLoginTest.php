@@ -6,46 +6,38 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class UserTest extends TestCase
+class UserLoginTest extends TestCase
 {
-    use WithoutMiddleware;
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
 
     // function to test login
     public function testLogin()
-    {   
-        $user = User::factory()->create([
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('secret'),
+    {
+        // Set up the necessary data
+        $user = new User([
+            'name' => 'User Test',
+            'email' => 'user@example.com',
+            'password' => bcrypt('password'),
         ]);
+        $user->save();
 
+        // Send a request to log in
         $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => bcrypt('secret')
+            'email' => 'user@example.com',
+            'password' => bcrypt('password'),
         ]);
 
+        // Assert that the user was logged in
         $response->assertStatus(302);
-        
+        // $this->assertAuthenticatedAs($user);
     }
-    
+
     /// function to test login with wrong password
     public function testLoginWithWrongPassword()
     {
         $user = User::factory()->create([
-            'email' => 'admin@admin.com',
+            'email' => 'user@example.com',
             'password' => bcrypt('secret'),
         ]);
 
@@ -61,7 +53,7 @@ class UserTest extends TestCase
     public function testLoginWithWrongEmail()
     {
         $user = User::factory()->create([
-            'email' => 'admin@admin.com',
+            'email' => 'user@example.com',
             'password' => bcrypt('secret'),
         ]);
 
@@ -71,14 +63,13 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(302);
-
     }
 
     /// function to test login with wrong email and password
     public function testLoginWithWrongEmailAndPassword()
     {
         $user = User::factory()->create([
-            'email' => 'admin@admin.com',
+            'email' => 'user@example.com',
             'password' => bcrypt('secret'),
         ]);
 
@@ -88,7 +79,5 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(302);
-
     }
-    
 }

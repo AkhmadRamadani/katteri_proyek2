@@ -10,7 +10,14 @@ class PaketModel extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     protected $table = 'paket';
-   
+
+    protected $fillable = [
+        'nama_paket',
+        'deskripsi',
+        'harga_paket',
+        'foto',
+    ];
+
     public function jadwal_makanan()
     {
         return $this->hasMany(JadwalMakananModel::class,'paket_id','id');
