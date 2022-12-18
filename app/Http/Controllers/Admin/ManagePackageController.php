@@ -69,7 +69,7 @@ class ManagePackageController extends Controller
         $package =  PaketModel::with(['jadwal_makanan' => function ($query) {
             $query->orderBy('hari_id', 'asc');
         }, 'jadwal_makanan.menu', 'jadwal_makanan.hari'])->find($id);
-        
+
         /// group menu by hari and add them to new array and it to package
         $menus = [
             'Senin' => [],
@@ -86,7 +86,7 @@ class ManagePackageController extends Controller
         $package->menus = $menus;
 
 
-        
+
 
         $menus = MenuModel::all();
         return view('admin.views.package.detail_package', ['package' => $package, 'menus' => $menus]);
@@ -124,8 +124,16 @@ class ManagePackageController extends Controller
         $package->save();
 
         $jadwalMakanan = new JadwalMakananModel();
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 1)->delete();
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 2)->delete();
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 3)->delete();
+
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 4)->delete();
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 5)->delete();
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 6)->delete();
+        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 7)->delete();
+
         if ($request->has('menu_senin')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 1)->delete();
             foreach ($request->menu_senin as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
@@ -135,7 +143,6 @@ class ManagePackageController extends Controller
             }
         }
         if ($request->has('menu_selasa')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 2)->delete();
             foreach ($request->menu_selasa as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
@@ -145,7 +152,6 @@ class ManagePackageController extends Controller
             }
         }
         if ($request->has('menu_rabu')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 3)->delete();
             foreach ($request->menu_rabu as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
@@ -155,7 +161,6 @@ class ManagePackageController extends Controller
             }
         }
         if ($request->has('menu_kamis')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 4)->delete();
             foreach ($request->menu_kamis as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
@@ -165,7 +170,6 @@ class ManagePackageController extends Controller
             }
         }
         if ($request->has('menu_jumat')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 5)->delete();
             foreach ($request->menu_jumat as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
@@ -175,7 +179,6 @@ class ManagePackageController extends Controller
             }
         }
         if ($request->has('menu_sabtu')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 6)->delete();
             foreach ($request->menu_sabtu as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
@@ -185,7 +188,6 @@ class ManagePackageController extends Controller
             }
         }
         if ($request->has('menu_minggu')) {
-            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 7)->delete();
             foreach ($request->menu_minggu as $menu) {
                 $jadwalMakanan->create([
                     'paket_id' => $id,
