@@ -10,6 +10,10 @@ class SubscribeModel extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     protected $table = 'subscribe';
+    protected $fillable = [
+        'user_id',
+        'paket_id',
+    ];
 
     /// have one to many with paket
     public function paket()

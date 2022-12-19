@@ -10,7 +10,14 @@ class PaymentModel extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     protected $table = 'payment';
-
+    protected $fillable = [
+        'subcription_id',
+        'user_id',
+        'status',
+        'bukti_pembayaran',
+        'tagihan',
+        
+    ];
     /// have one to one with subscribe
     public function subscribe()
     {
