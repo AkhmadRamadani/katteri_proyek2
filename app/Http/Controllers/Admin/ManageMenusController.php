@@ -46,15 +46,19 @@ class ManageMenusController extends Controller
      */
     public function store(Request $request)
     {
-
-        $fileToUpload = $request->file('foto')->store('menus', 'public');
+        
 
         $menu = new MenuModel();
         $menu->nama_menu = $request->nama_menu;
         $menu->deskripsi = $request->deskripsi_menu;
         $menu->nutrition_facts = $request->nutrition_facts;
-        $menu->foto = $fileToUpload;
         $menu->qr_code = null;
+        if ($request->hasFile('foto')) {
+            $fileToUpload = $request->file('foto')->store('menus', 'public');
+        $menu->foto = $fileToUpload;
+
+        }
+
         $menu->save();
 
         /// get latest menu id
@@ -66,7 +70,7 @@ class ManageMenusController extends Controller
         $qrcode = QrCode::format('png')
             ->size(200)->errorCorrection('H')
             ->generate('http://127.0.0.1:8000/menu-detail/' . $menu_id);
-        $output_file = '/qr_codes/qr-' . time() . '.png';
+        $output_file = 'qr_codes/qr-' . time() . '.png';
         Storage::disk('public')->put($output_file, $qrcode);
 
         /// save qrcode to database
@@ -121,7 +125,7 @@ class ManageMenusController extends Controller
             $menu->save();
 
             return redirect()->route('menu.index');
-        } else{
+        } else {
             $menu = MenuModel::find($id);
             $menu->nama_menu = $request->nama_menu;
             $menu->deskripsi = $request->deskripsi_menu;
@@ -130,7 +134,6 @@ class ManageMenusController extends Controller
 
             return redirect()->route('menu.index');
         }
-        
     }
 
     /**
