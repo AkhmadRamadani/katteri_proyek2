@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_paket');
             $table->decimal('harga_paket', 10, 2);
             $table->string('deskripsi');
-            $table->string('foto');
+            $table->string('foto')->nullable()->default(null);
             $table->timestamps();
         });
     }
