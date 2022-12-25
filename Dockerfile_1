@@ -1,0 +1,48 @@
+# docker file for existing laravel project with apache, php 8.1.0, mysql, composer and php imagick
+#
+# Build: docker build -t laravel:latest .
+# Run: docker run -d -p 8080:80 --name laravel laravel:latest
+# Access: http://localhost:8080
+
+FROM php:8.1.0-apache
+
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libpq-dev \
+    libzip-dev \
+    unzip \
+    libmagickwand-dev \
+&& docker-php-ext-configure gd --with-jpeg \
+&& docker-php-ext-install -j$(nproc) gd \
+&& pecl install imagick \
+&& docker-php-ext-enable imagick
+
+COPY .env .
+RUN sed -i 's/DB_HOST=127.0.0.1/DB_HOST=db/g' .env
+RUN sed -i 's/DB_DATABASE=homestead/DB_DATABASE=laravel/g' .env
+RUN sed -i 's/DB_USERNAME=homestead/DB_USERNAME=root/g' .env
+RUN sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=password/g' .env
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+COPY . .
+
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install
+RUN php artisan key:generate
+RUN php artisan config:cache
+RUN chown -R www-data:www-data .
+
+# Allow permission to apache
+RUN a2enmod rewrite
+RUN chown -R www-data:www-data /var/www/html
+
+# configure apache
+COPY apache2.conf /etc/apache2/apache2.conf
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
+EXPOSE 80
+
+CMD ["apache2-foreground"]
