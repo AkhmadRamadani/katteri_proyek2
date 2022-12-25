@@ -46,6 +46,12 @@ class ManagePackageController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_paket' => 'required',
+            'deskripsi_paket' => 'required',
+            'harga_paket' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         // store image 
         $package = new PaketModel();
 

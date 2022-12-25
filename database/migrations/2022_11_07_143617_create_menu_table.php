@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('qr_code')->nullable()->default(null);
             $table->string('foto')->nullable()->default(null);
-            $table->longText('nutrition_facts');
+            $table->longText('nutrition_facts')->nullable()->default(null);
             $table->timestamps();
         });
     }

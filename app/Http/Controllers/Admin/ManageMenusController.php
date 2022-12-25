@@ -47,6 +47,11 @@ class ManageMenusController extends Controller
     public function store(Request $request)
     {
         
+        $request->validate([
+            'nama_menu' => 'required',
+            'deskripsi_menu' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
         $menu = new MenuModel();
         $menu->nama_menu = $request->nama_menu;

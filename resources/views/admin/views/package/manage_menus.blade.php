@@ -452,7 +452,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <textarea class="ckeditor form-control" name="nutrition_facts"></textarea>
+                                                <textarea class=" form-control" name="nutrition_facts"></textarea>
                                             </div>
                                         </div>
 

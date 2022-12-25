@@ -148,7 +148,7 @@
                                                 @foreach ($users_this_month as $item)
                                                     <div class="user-card">
                                                         <div class="user-avatar bg-primary-dim">
-                                                            <span>@abbr($item->name)</span>
+                                                            <span>{{$item->id}}</span>
                                                         </div>
                                                         <div class="user-info">
                                                             <span class="lead-text">{{ $item->name }}</span>

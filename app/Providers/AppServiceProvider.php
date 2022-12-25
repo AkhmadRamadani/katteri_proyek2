@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         });
         /// create function for abbreviate string with only 2 characters and uppercase
         Blade::directive('abbr', function ($string) {
-            return "<?php echo ucfirst(str_limit($string, 0, 2)); ?>";
+            return "<?php echo ucfirst(Str::limit($string, 0, 2)); ?>";
         });
 
         $this->app->alias(\SimpleSoftwareIO\QrCode\Facades\QrCode::class, 'QrCode');
