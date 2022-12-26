@@ -21,6 +21,7 @@ class ManageMenusController extends Controller
         /// search menu by name
         if (request()->has('search')) {
             $menus = MenuModel::where('nama_menu', 'like', '%' . request()->search . '%')->paginate(10);
+            // retrieve foto from s3
             return view('admin.views.package.manage_menus', ['menus' => $menus]);
         }
         // menu with pagination
@@ -46,7 +47,7 @@ class ManageMenusController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'nama_menu' => 'required',
             'deskripsi_menu' => 'required',
@@ -59,9 +60,9 @@ class ManageMenusController extends Controller
         $menu->nutrition_facts = $request->nutrition_facts;
         $menu->qr_code = null;
         if ($request->hasFile('foto')) {
-            $fileToUpload = $request->file('foto')->store('menus', 'public');
-        $menu->foto = $fileToUpload;
-
+            $fileToUpload = Storage::disk('s3')->put('menus', $request->file('foto'));
+            $menu->foto = $fileToUpload;
+            
         }
 
         $menu->save();
@@ -74,9 +75,9 @@ class ManageMenusController extends Controller
 
         $qrcode = QrCode::format('png')
             ->size(200)->errorCorrection('H')
-            ->generate('http://127.0.0.1:8000/menu-detail/' . $menu_id);
+            ->generate(env('APP_URL') . '/menu-detail/' . $menu_id);
         $output_file = 'qr_codes/qr-' . time() . '.png';
-        Storage::disk('public')->put($output_file, $qrcode);
+        Storage::disk('s3')->put($output_file, $qrcode);
 
         /// save qrcode to database
         $menu->qr_code = $output_file;
@@ -120,7 +121,7 @@ class ManageMenusController extends Controller
     {
         // if user upload new image
         if ($request->hasFile('foto')) {
-            $fileToUpload = $request->file('foto')->store('menus', 'public');
+            $fileToUpload = Storage::disk('s3')->put('menus', $request->file('foto'));
 
             $menu = MenuModel::find($id);
             $menu->nama_menu = $request->nama_menu;

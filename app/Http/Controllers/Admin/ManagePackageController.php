@@ -8,6 +8,7 @@ use App\Models\MenuModel;
 use App\Models\PaketModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ManagePackageController extends Controller
 {
@@ -56,7 +57,7 @@ class ManagePackageController extends Controller
         $package = new PaketModel();
 
         if ($request->hasFile('foto')) {
-            $fileToUpload = $request->file('foto')->store('packages', 'public');
+            $fileToUpload = Storage::disk('s3')->put('packages', $request->file('foto'));
             $package->foto = $fileToUpload;
         }
         $package->nama_paket = $request->nama_paket;
@@ -127,7 +128,7 @@ class ManagePackageController extends Controller
         $package->deskripsi = $request->deskripsi_paket;
         $package->harga_paket = $request->harga_paket;
         if ($request->hasFile('foto')) {
-            $fileToUpload = $request->file('foto')->store('packages', 'public');
+            $fileToUpload = Storage::disk('s3')->put('packages', $request->file('foto'));
             $package->foto = $fileToUpload;
         }
         $package->save();

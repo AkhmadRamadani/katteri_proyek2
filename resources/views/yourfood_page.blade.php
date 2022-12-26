@@ -83,7 +83,7 @@
                                                                                 style="background-color: white; padding: 20px; border-radius: 20px; display: flex; 
                                                                                 align-items: center;
                                                                                 justify-content: center;">
-                                                                                <img src="{{asset('storage/'.$item->menu->foto) }}"
+                                                                                <img src="{{ Storage::disk('s3')->temporaryUrl( $item->menu->foto, '+2 minutes')  }}"
                                                                                     class="menu-img img-fluid"
                                                                                     alt=""
                                                                                     style="width: 150px; height: 150px; margin-right: 30px">

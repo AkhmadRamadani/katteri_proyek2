@@ -116,7 +116,7 @@
                                                                     </div>
                                                                 @else
                                                                     <div class="col-md-6">
-                                                                        <img src="{{ asset('storage/' . $item->payment->bukti_pembayaran) }}"
+                                                                        <img src="{{ Storage::disk('s3')->temporaryUrl( $item->payment->bukti_pembayaran, '+2 minutes') }}"
                                                                             alt="proof of transaction" width="100%">
 
                                                                     </div>

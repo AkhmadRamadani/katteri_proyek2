@@ -48,7 +48,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group focused"
                                                         style="background-color: white; padding: 20px; border-radius: 20px; display: flex">
-                                                        <img src="{{ asset('storage/'.$item->paket->foto) }}"
+                                                        <img src="{{ Storage::disk('s3')->temporaryUrl($item->paket->foto, '+2 minutes') }}"
                                                             class="menu-img img-fluid" alt=""
                                                             style="width: 250px; margin-right: 30px">
                                                         <div>

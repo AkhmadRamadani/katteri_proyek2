@@ -43,8 +43,8 @@
 
                                         <div class="col-12 col-md-4">
                                             <div class="receipe-ratings text-center my-5">
-                                                <a href="{{ asset('storage/'.$menu->foto) }}" class="glightbox"><img
-                                                        src="{{ asset('storage/'.$menu->foto) }}" class="menu-img img-fluid"
+                                                <a href="{{ Storage::disk('s3')->temporaryUrl( $menu->foto, '+2 minutes')  }}" class="glightbox"><img
+                                                        src="{{ Storage::disk('s3')->temporaryUrl( $menu->foto, '+2 minutes')  }}" class="menu-img img-fluid"
                                                         alt=""></a>
                                             </div>
                                         </div>

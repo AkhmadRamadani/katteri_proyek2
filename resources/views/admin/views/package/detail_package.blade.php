@@ -71,7 +71,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <img class="card-img-top" src="{{ asset('storage/' . $package->foto) }}"
+                                                    <img class="card-img-top" src="{{Storage::disk('s3')->temporaryUrl($package->foto, '+2 minutes')}}"
                                                         alt="" style="padding: 40px;">
                                                 </div>
                                             </div>

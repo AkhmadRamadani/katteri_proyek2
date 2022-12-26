@@ -58,7 +58,8 @@
                                         <div class="card card-bordered product-card">
                                             <div class="product-thumb">
                                                 <a href="{{ route('paket.show', $item->id) }}">
-                                                    <img class="card-img-top" src="{{ asset('storage/' . $item->foto) }}"
+                                                    <img class="card-img-top"
+                                                        src="{{ Storage::disk('s3')->temporaryUrl($item->foto, '+2 minutes') }}"
                                                         alt="" style="padding: 40px">
                                                 </a>
                                             </div>
@@ -66,7 +67,8 @@
                                                 <ul class="product-tags">
                                                     <li><a href="{{ route('paket.show', $item->id) }}">Package</a></li>
                                                 </ul>
-                                                <h5 class="product-title"><a href="{{ route('paket.show', $item->id) }}">{{ $item->nama_paket }}</a>
+                                                <h5 class="product-title"><a
+                                                        href="{{ route('paket.show', $item->id) }}">{{ $item->nama_paket }}</a>
                                                 </h5>
                                                 <div class="product-price text-primary h5"> @money($item->harga_paket)</div>
                                             </div>
@@ -95,7 +97,8 @@
                                             <div class="form-group">
                                                 <label class="form-label" for="product-title">Package Title</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="product-title" name="nama_paket">
+                                                    <input type="text" class="form-control" id="product-title"
+                                                        name="nama_paket">
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +114,8 @@
                                             <div class="form-group">
                                                 <label class="form-label" for="product-title">Price</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" id="product-title" name="harga_paket">
+                                                    <input type="text" class="form-control" id="product-title"
+                                                        name="harga_paket">
                                                 </div>
                                             </div>
                                         </div>
@@ -120,13 +124,15 @@
                                             <div class="form-group">
                                                 <label class="form-label" for="product-title">Price</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="file" class="form-control" id="product-title" name="foto">
+                                                    <input type="file" class="form-control" id="product-title"
+                                                        name="foto">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add
+                                            <button type="submit" class="btn btn-primary"><em
+                                                    class="icon ni ni-plus"></em><span>Add
                                                     New</span></button>
                                         </div>
                                     </div>
