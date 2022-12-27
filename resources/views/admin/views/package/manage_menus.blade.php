@@ -68,7 +68,7 @@
                                                 <div class="nk-tb-item">
                                                     <div class="nk-tb-col tb-col-sm">
                                                         <span class="tb-product">
-                                                            <img src="{{ asset('storage/' . $item->foto) }}" alt=""
+                                                            <img src="{{ Storage::disk('s3')->temporaryUrl($item->foto, '+2 minutes') }}" alt="asw"
                                                                 class="thumb">
                                                             <span class="title">{{ $item->nama_menu }}</span>
                                                         </span>
@@ -228,7 +228,7 @@
                                                                                 </div>
                                                                                 <div class="my-2">
 
-                                                                                    <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                                    <img src="{{ Storage::disk('s3')->temporaryUrl($item->foto, '+2 minutes')}}"
                                                                                         alt="" width="100px">
                                                                                 </div>
                                                                             </div>
@@ -358,7 +358,7 @@
                                                                         @error('foto') is-invalid-label @enderror"
                                                                             for="default-06">Image</label>
                                                                         <div class="form-control-wrap">
-                                                                            <img src="{{ asset('storage/' . $item->foto) }}"
+                                                                            <img src="{{Storage::disk('s3')->temporaryUrl($item->foto, '+2 minutes')}}"
                                                                                 alt="" width="100px">
                                                                         </div>
                                                                         @error('foto')
@@ -377,7 +377,7 @@
                                                                         @error('qr_code') is-invalid-label @enderror"
                                                                             for="default-06">QR-Code</label>
                                                                         <div class="form-control-wrap">
-                                                                            <img src="{{ asset('storage/' . $item->qr_code) }}"
+                                                                            <img src="{{ Storage::disk('s3')->temporaryUrl($item->qr_code, '+2 minutes')}}"
                                                                                 alt="" width="100px">
                                                                         </div>
                                                                         @error('qr_code')

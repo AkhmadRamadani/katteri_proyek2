@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PaymentModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PaymentController extends Controller
 {
@@ -78,7 +79,7 @@ class PaymentController extends Controller
     {
         $this->validator($request->all())->validate();
         /// get fileToUpload from request
-        $fileToUpload = $request->file('fileToUpload')->store('payment', 'public');
+        $fileToUpload = Storage::disk('s3')->put('payment', $request->file('fileToUpload'));
 
         /// get data from request
         $payment = PaymentModel::find($id);

@@ -146,7 +146,7 @@
                         {{-- loop paket variabel --}}
                         @foreach ($paket as $p)
                         <div class="swiper-slide event-item d-flex flex-column justify-content-end"
-                            style="background-image: url({{ asset('storage/'.$p->foto) }})">
+                            style="background-image: url({{  Storage::disk('s3')->temporaryUrl( $p->foto, '+2 minutes')  }})">
                             <h3>{{ $p->nama_paket }}</h3>
                             <div class="price align-self-start">@money($p->harga_paket)</div>
                             <p class="description">
