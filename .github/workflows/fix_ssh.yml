@@ -18,6 +18,8 @@ jobs:
           username: ${{ secrets.USER_NAME  }}
           key: ${{ secrets.AWS_PRIVATE_KEY  }}
           script: |
+            ls -la
+            cd /home/ubuntu/katteri_proyek2/
             git pull
             docker-compose up -d --build
 
