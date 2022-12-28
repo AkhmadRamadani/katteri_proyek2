@@ -1,0 +1,45 @@
+name: ssh-into-aws-ec2
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+#  bucket_name: "<example-bucket-name>"
+  AWS_REGION: "us-east-1"
+  REMOTE_HOST:  ${{ secrets.HOSTNAME  }}
+  REMOTE_USER: ${{ secrets.USER_NAME  }}
+  REMOTE_PATH: "/home/ubuntu"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/github-actions-key
+          chmod 600 ~/.ssh/github-actions-key
+          cat >>~/.ssh/config <<END
+          Host ec2
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/github-actions-key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_HOST: ${{ env.REMOTE_HOST }}
+          SSH_USER: ${{ env.REMOTE_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }} 
+      - name: List home directory
+        run: ssh ec2 'ls -la'
+        
