@@ -14,12 +14,6 @@ jobs:
     
     - name: Build the docker_compose
       run: docker-compose up -d --build
-      
-    - name: Buid the application
-      run: docker-compose exec app composer install 
-    
-    - name: Run the migration
-      run: docker-compose exec app php artisan migrate 
 
   Deploy:
     needs: build
