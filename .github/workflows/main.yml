@@ -32,4 +32,4 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ubuntu@${HOSTNAME}
           
             #Now we have got the access of EC2 and we will start the deploy
-            ls -a
+            git pull
