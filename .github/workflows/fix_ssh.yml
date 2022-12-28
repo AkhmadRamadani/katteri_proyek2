@@ -21,7 +21,6 @@ jobs:
             ls -la
             cd /home/ubuntu/katteri_proyek2/
             git pull
-            docker-compose up -d --build
 
 # name: Deploy to EC2
 #
