@@ -32,10 +32,4 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ubuntu@${HOSTNAME}
           
             #Now we have got the access of EC2 and we will start the deploy
-            #ls -a &&
-            #cd katteri_proyek2/ &&
-            git checkout master &&
-            git fetch --all &&
-            git reset --hard origin/master &&
-            git pull origin master &&
-            docker-compose up --force-recreate -d 
+            ls -a
