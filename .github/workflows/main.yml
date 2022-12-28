@@ -6,17 +6,17 @@ on:
 
 jobs:
 #First we will see the application build or not , then we will deploy in EC2
-  build:
-    runs-on: ubuntu-latest
+  #build:
+   # runs-on: ubuntu-latest
     
-    steps:
-    - uses: actions/checkout@v2
+   # steps:
+   # - uses: actions/checkout@v2
     
-    - name: Build the docker_compose
-      run: docker-compose up -d --build
+   # - name: Build the docker_compose
+    #  run: docker-compose up -d --build
 
   Deploy:
-    needs: build
+    #needs: build
     runs-on: ubuntu-latest
     
     steps:
@@ -29,12 +29,7 @@ jobs:
             
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          ssh -o StrictHostKeyChecking=no -i private_key ubuntu@${HOSTNAME}
           
-            #Now we have got the access of EC2 and we will start the deploy .
-            cd /home/ubuntu/katteri_proyek2 &&
-            git checkout master &&
-            git fetch --all &&
-            git reset --hard origin/master &&
-            git pull origin master &&
-            docker-compose -f docker-compose.prod.yml up -d --build 
+            #Now we have got the access of EC2 and we will start the deploy
+            git pull
