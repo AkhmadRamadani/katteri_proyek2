@@ -8,7 +8,7 @@
             <div class="row justify-content-between gy-5">
                 <div
                     class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up">Food Delivery<br>Without Worry!!!</h2>
+                    <h2 data-aos="fade-up">Test CI/CD <span> UAS 2022 </h2>
                     <p data-aos="fade-up" data-aos-delay="100">Sering dipusingkan dengan urusan makanan tiap hari? Mulai
                         kebiasaan meal planning dengan Katteri, bisa pesan makanan untuk semua kebutuhan dari jauh-jauh
                         hari.</p>
