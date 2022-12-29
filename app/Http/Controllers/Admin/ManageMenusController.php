@@ -60,8 +60,8 @@ class ManageMenusController extends Controller
         $menu->nutrition_facts = $request->nutrition_facts;
         $menu->qr_code = null;
         if ($request->hasFile('foto')) {
-            $fileToUpload = Storage::disk('s3')->put('menus', $request->file('foto'));
-            $menu->foto = $fileToUpload;
+            $fileToUpload = Storage::disk('s3')->put('/',$request->file('foto'));
+            $menu->foto = 'menu-' . $fileToUpload;
             
         }
 
@@ -76,7 +76,7 @@ class ManageMenusController extends Controller
         $qrcode = QrCode::format('png')
             ->size(200)->errorCorrection('H')
             ->generate(env('APP_URL') . '/menu-detail/' . $menu_id);
-        $output_file = 'qr_codes/qr-' . time() . '.png';
+        $output_file = '/qr-' . time() . '.png';
         Storage::disk('s3')->put($output_file, $qrcode);
 
         /// save qrcode to database
@@ -121,13 +121,13 @@ class ManageMenusController extends Controller
     {
         // if user upload new image
         if ($request->hasFile('foto')) {
-            $fileToUpload = Storage::disk('s3')->put('menus', $request->file('foto'));
+            $fileToUpload = Storage::disk('s3')->put('/', $request->file('foto'));
 
             $menu = MenuModel::find($id);
             $menu->nama_menu = $request->nama_menu;
             $menu->deskripsi = $request->deskripsi_menu;
             $menu->nutrition_facts = $request->nutrition_facts;
-            $menu->foto = $fileToUpload;
+            $menu->foto = 'menu' . $fileToUpload;
             $menu->save();
 
             return redirect()->route('menu.index');
