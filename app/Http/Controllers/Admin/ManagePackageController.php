@@ -158,65 +158,65 @@ class ManagePackageController extends Controller
 
         if ($request->has('menu_senin')) {
             foreach ($request->menu_senin as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 1,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 1;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
         if ($request->has('menu_selasa')) {
             foreach ($request->menu_selasa as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 2,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 2;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
         if ($request->has('menu_rabu')) {
             foreach ($request->menu_rabu as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 3,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 3;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
         if ($request->has('menu_kamis')) {
             foreach ($request->menu_kamis as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 4,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 4;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
         if ($request->has('menu_jumat')) {
             foreach ($request->menu_jumat as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 5,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 5;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
         if ($request->has('menu_sabtu')) {
             foreach ($request->menu_sabtu as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 6,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 6;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
         if ($request->has('menu_minggu')) {
             foreach ($request->menu_minggu as $menu) {
-                $jadwalMakanan->create([
-                    'paket_id' => $id,
-                    'hari_id' => 7,
-                    'menu_id' => $menu
-                ]);
+                $newJadwalMakanan = new JadwalMakananModel();
+                $newJadwalMakanan->paket_id = $id; 
+                $newJadwalMakanan->hari_id = 7;
+                $newJadwalMakanan->menu_id = $menu;
+                $newJadwalMakanan->save();
             }
         }
 
