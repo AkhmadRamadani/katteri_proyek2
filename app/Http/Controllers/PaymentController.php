@@ -79,7 +79,7 @@ class PaymentController extends Controller
     {
         $this->validator($request->all())->validate();
         /// get fileToUpload from request
-        $fileToUpload = Storage::disk('s3')->put('payment', $request->file('fileToUpload'));
+        $fileToUpload = Storage::disk('s3')->put('/', $request->file('fileToUpload'));
 
         /// get data from request
         $payment = PaymentModel::find($id);

@@ -57,7 +57,7 @@ class ManagePackageController extends Controller
         $package = new PaketModel();
 
         if ($request->hasFile('foto')) {
-            $fileToUpload = Storage::disk('s3')->put('packages', $request->file('foto'));
+            $fileToUpload = Storage::disk('s3')->put('/', $request->file('foto'));
             $package->foto = $fileToUpload;
         }
         $package->nama_paket = $request->nama_paket;
@@ -128,7 +128,7 @@ class ManagePackageController extends Controller
         $package->deskripsi = $request->deskripsi_paket;
         $package->harga_paket = $request->harga_paket;
         if ($request->hasFile('foto')) {
-            $fileToUpload = Storage::disk('s3')->put('packages', $request->file('foto'));
+            $fileToUpload = Storage::disk('s3')->put('/', $request->file('foto'));
             $package->foto = $fileToUpload;
         }
         $package->save();
