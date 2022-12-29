@@ -134,14 +134,27 @@ class ManagePackageController extends Controller
         $package->save();
 
         $jadwalMakanan = new JadwalMakananModel();
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 1)->delete();
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 2)->delete();
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 3)->delete();
-
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 4)->delete();
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 5)->delete();
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 6)->delete();
-        $jadwalMakanan->where('paket_id', $id)->where('hari_id', 7)->delete();
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 1)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 1)->delete();
+        }
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 2)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 2)->delete();
+        }
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 3)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 3)->delete();
+        }
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 4)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 4)->delete();
+        }
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 5)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 5)->delete();
+        }
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 6)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 6)->delete();
+        }
+        if ($jadwalMakanan->where('paket_id', $id)->where('hari_id', 7)->exists()) {
+            $jadwalMakanan->where('paket_id', $id)->where('hari_id', 7)->delete();
+        }
 
         if ($request->has('menu_senin')) {
             foreach ($request->menu_senin as $menu) {
