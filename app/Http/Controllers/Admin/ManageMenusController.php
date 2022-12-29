@@ -61,7 +61,7 @@ class ManageMenusController extends Controller
         $menu->qr_code = null;
         if ($request->hasFile('foto')) {
             $fileToUpload = Storage::disk('s3')->put('/',$request->file('foto'));
-            $menu->foto = 'menu-' . $fileToUpload;
+            $menu->foto = $fileToUpload;
             
         }
 
@@ -127,7 +127,7 @@ class ManageMenusController extends Controller
             $menu->nama_menu = $request->nama_menu;
             $menu->deskripsi = $request->deskripsi_menu;
             $menu->nutrition_facts = $request->nutrition_facts;
-            $menu->foto = 'menu' . $fileToUpload;
+            $menu->foto =  $fileToUpload;
             $menu->save();
 
             return redirect()->route('menu.index');
